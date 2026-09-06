@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class HidingTheText : MonoBehaviour
 {
-    void HideText()
+    public void HideText(string text)
     {
-        gameObject.SetActive(false);
+        Invoke(nameof(DisableObject), 3f);
     }
 
-    void Start()
+    public void DisableObject()
     {
-        Invoke(nameof(HideText), 3f);
+        gameObject.SetActive(false);
     }
 }

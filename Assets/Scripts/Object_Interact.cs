@@ -6,27 +6,24 @@ using UnityEngine;
 public class Object_Interact : MonoBehaviour
 {
     public bool playerInRange;
-    public string ItemName;
+    [field: SerializeField] public string ItemName { get; private set; }
     GameObject ItemPickUp;
     TextMeshProUGUI ItemPickUpText;
+    HidingTheText hidingTheText;
     void Start()
     {
         ItemPickUp = GameObject.Find("ItemPickUp");
+        ItemPickUp.TryGetComponent(out hidingTheText);
         ItemPickUpText = ItemPickUp.GetComponentInChildren<TextMeshProUGUI>();
-        ItemPickUp.GetComponent<HidingTheText>().HideText(ItemName);
-    }
-    public string GetItemName()
-    {
-        return ItemName;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            HidingTheText hidingTheText = ItemPickUp.GetComponent<HidingTheText>();
             playerInRange = true;
             ItemPickUpText.text = ItemName;
             ItemPickUp.SetActive(true);
+            hidingTheText.HideText(ItemName);
             Destroy(gameObject);
         }
     }
