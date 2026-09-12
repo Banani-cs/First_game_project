@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
-    [SerializeField] private Canvas canvas;
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
+    [SerializeField] private Canvas _canvas;
+    private RectTransform _rectTransform;
+    private CanvasGroup _canvasGroup;
 
-    Vector3 startPosition;
-    Transform startParent;
+    private Vector3 _startPosition;
+    private Transform _startParent;
 
     private void Awake()
     {
 
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        _rectTransform = GetComponent<RectTransform>();
+        _canvasGroup = GetComponent<CanvasGroup>();
 
     }
 
@@ -26,32 +26,32 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
 
         Debug.Log("OnBeginDrag");
-        canvasGroup.alpha = .6f;
+        _canvasGroup.alpha = .6f;
         //So the ray cast will ignore the item itself.
-        canvasGroup.blocksRaycasts = false;
-        startPosition = transform.position;
-        startParent = transform.parent;
+        _canvasGroup.blocksRaycasts = false;
+        _startPosition = transform.position;
+        _startParent = transform.parent;
         transform.SetParent(transform.root);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         //So the item will move with our mouse (at same speed)  and so it will be consistant if the canvas has a different scale (other then 1);
-        rectTransform.anchoredPosition += eventData.delta;
+        _rectTransform.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
 
-        if (transform.parent == startParent || transform.parent == transform.root)
+        if (transform.parent == _startParent || transform.parent == transform.root)
         {
-            transform.position = startPosition;
-            transform.SetParent(startParent);
+            transform.position = _startPosition;
+            transform.SetParent(_startParent);
 
         }
         Debug.Log("OnEndDrag");
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
+        _canvasGroup.alpha = 1f;
+        _canvasGroup.blocksRaycasts = true;
     }
 
 }

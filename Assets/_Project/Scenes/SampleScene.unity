@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186569056}
-  m_Layer: 0
-  m_Name: GroundCheck
+  m_Layer: 6
+  m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9ec51c409b994dbcf87f1e876ba1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Movements
-  moveSpeed: 2
+  _moveSpeed: 2
 --- !u!1 &214541971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9222779883738455603, guid: dc1ce056f90e09749a3bfa868460e5a7, type: 3}
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9ec51c409b994dbcf87f1e876ba1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Movements
-  moveSpeed: 2
+  _moveSpeed: 2
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -815,9 +815,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dcbfc4dbc905294dac1c54d48293d1b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MouseMovements
-  mouseSensitivity: 150
-  playerBody: {fileID: 430899966}
+  m_EditorClassIdentifier: Assembly-CSharp::MouseMovement
+  _mouseSensitivity: 100
+  _playerBody: {fileID: 430899966}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 430899966}
   - component: {fileID: 430899965}
   - component: {fileID: 430899967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1018,14 +1018,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f61a5c8f3abb15843814e6ee96416e34, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovements
-  controller: {fileID: 430899965}
-  speed: 20
-  gravity: -19.62
-  jumpHeight: 5
-  groundCheck: {fileID: 186569056}
-  groundDistance: 0.4
-  groundMask:
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _speed: 12
+  _gravity: -19.62
+  _jumpHeight: 3
+  _groundCheck: {fileID: 186569056}
+  _groundDistance: 0.4
+  _groundMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!1 &573074550
@@ -1039,7 +1038,7 @@ GameObject:
   - component: {fileID: 573074551}
   - component: {fileID: 573074553}
   - component: {fileID: 573074552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1486,7 +1485,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1693026570606076, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1564739572}
+      addedObject: {fileID: 1564739577}
   m_SourcePrefab: {fileID: 100100000, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
 --- !u!4 &1046361206 stripped
 Transform:
@@ -1503,7 +1502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060779204}
   - component: {fileID: 1060779205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SelectionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,8 +1536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c09f0e94e09de459e1b8ce72a29da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectionManager
-  interaction_Info_UI: {fileID: 1356114917}
-  maxDistance: 5
+  _interactionInfoUI: {fileID: 1356114917}
+  _maxDistance: 5
 --- !u!1 &1327704737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1625,7 @@ GameObject:
   - component: {fileID: 1356114920}
   - component: {fileID: 1356114919}
   m_Layer: 5
-  m_Name: interaction_Info_UI
+  m_Name: interactionInfoUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1756,7 +1755,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1693026570606076, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
   m_PrefabInstance: {fileID: 1046361205}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1564739572
+--- !u!114 &1564739577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1767,8 +1766,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46ea343cb1bd86d4384b41cf4f7b0a70, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable_Object
-  <ItemName>k__BackingField: Pine_Tree
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  <ItemName>k__BackingField: Tree
 --- !u!1 &1678021897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
@@ -1807,8 +1806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0934b51392df744960f87d0d4c7bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_Interact
-  playerInRange: 0
-  ItemName: Rock
+  <ItemName>k__BackingField: Rock
 --- !u!1 &1739469359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1851,7 @@ GameObject:
   - component: {fileID: 2145436308}
   - component: {fileID: 2145436310}
   - component: {fileID: 2145436309}
+  - component: {fileID: 2145436311}
   m_Layer: 5
   m_Name: ItemPickUp
   m_TagString: Untagged
@@ -1979,6 +1978,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145436307}
   m_CullTransparentMesh: 1
+--- !u!114 &2145436311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145436307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ad39041afea5d45a4defc220d0efa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HidingTheText
 --- !u!1001 &4940716653415415206
 PrefabInstance:
   m_ObjectHideFlags: 0
