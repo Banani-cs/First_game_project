@@ -11,7 +11,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
-    public static GameObject itemBeingDragged { get; private set; }
     Vector3 startPosition;
     Transform startParent;
 
@@ -33,21 +32,16 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         startPosition = transform.position;
         startParent = transform.parent;
         transform.SetParent(transform.root);
-        itemBeingDragged = gameObject;
-
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         //So the item will move with our mouse (at same speed)  and so it will be consistant if the canvas has a different scale (other then 1);
         rectTransform.anchoredPosition += eventData.delta;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
-        itemBeingDragged = null;
 
         if (transform.parent == startParent || transform.parent == transform.root)
         {
@@ -55,7 +49,6 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             transform.SetParent(startParent);
 
         }
-
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
