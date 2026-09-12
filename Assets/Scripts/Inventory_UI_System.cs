@@ -9,8 +9,8 @@ public class InventorySystem : MonoBehaviour
     public static InventorySystem Instance { get; set; }
 
     public GameObject inventoryScreenUI;
-    public bool isOpen;
 
+    [SerializeField] private KeyCode toggleInventoryBtn = KeyCode.I;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,28 +22,24 @@ public class InventorySystem : MonoBehaviour
             Instance = this;
         }
     }
-
     void Start()
     {
-        isOpen = false;
+        inventoryScreenUI.SetActive(false);
     }
 
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.I) && !isOpen)
+        if (Input.GetKeyDown(toggleInventoryBtn))
         {
-
-            Debug.Log("i is pressed");
-            inventoryScreenUI.SetActive(true);
-            isOpen = true;
-
-        }
-        else if (Input.GetKeyDown(KeyCode.I) && isOpen)
-        {
-            inventoryScreenUI.SetActive(false);
-            isOpen = false;
+            if (!inventoryScreenUI.activeSelf)
+            {
+                inventoryScreenUI.SetActive(true);
+            }
+            else
+            {
+                inventoryScreenUI.SetActive(false);
+            }
         }
     }
-
 }
