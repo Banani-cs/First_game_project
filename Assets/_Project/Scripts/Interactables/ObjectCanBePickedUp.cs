@@ -5,26 +5,36 @@ using TMPro;
 using UnityEngine;
 public class ObjectCanBePickedUp : MonoBehaviour
 {
-    private bool _playerInRange;
+    [field: SerializeField] public bool playerInRange { get; private set; } = false;
     [field: SerializeField] public string ItemName { get; private set; }
     private GameObject _itemPickUp;
     private TextMeshProUGUI _itemPickUpText;
     private HidingTheText _hidingTheText;
-    void Start()
+
+    private void Start()
     {
         _itemPickUp = GameObject.Find("ItemPickUp");
         _itemPickUp.TryGetComponent(out _hidingTheText);
         _itemPickUpText = _itemPickUp.GetComponentInChildren<TextMeshProUGUI>();
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange)
+        {
+            Debug.Log("Picked up " + ItemName);
+
+            _hidingTheText.HideText(ItemName);
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _playerInRange = true;
+            playerInRange = true;
             _itemPickUpText.text = ItemName;
             _itemPickUp.SetActive(true);
-            _hidingTheText.HideText(ItemName);
-            Destroy(gameObject);
         }
     }
 
@@ -32,7 +42,8 @@ public class ObjectCanBePickedUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _playerInRange = false;
+            playerInRange = false;
+            _itemPickUp.SetActive(false);
         }
     }
 }

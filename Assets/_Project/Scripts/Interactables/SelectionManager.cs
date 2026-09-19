@@ -34,7 +34,9 @@ public class SelectionManager : MonoBehaviour
             This is notoriously unoptimized, because GetComponent is a very expensive function on the CPU
             */
             // We use this instead
-            if (selectedTransform.TryGetComponent(out InteractableObject interactableObject))
+            if (selectedTransform.TryGetComponent(out InteractableObject interactableObject) &&
+            (selectedTransform.TryGetComponent(out ObjectCanBePickedUp objectCanBePickedUp) &&
+            objectCanBePickedUp.playerInRange))
             {
                 _interactionInfoText.text = interactableObject.ItemName;
                 _interactionInfoUI.SetActive(true);
