@@ -22,14 +22,28 @@ public class InteractableObject : MonoBehaviour
 
     private void Update()
     {
+        //Checks for 4 things
+            //1. Left mouse button is pressed
+            //2. Player is in range
+            //3. Target is selected
+            //4. The object is on the interactableObject layer
         if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget && gameObject.layer == LayerMask.NameToLayer("interactableObject"))
         {
-            Debug.Log("Picked up " + ItemName);
-
-            _hidingTheText.HideText(ItemName);
-            Destroy(gameObject);
+            //If inventory isnt full
+            if(!InventorySystem.Instance.CheckIfFull())
+            {
+                InventorySystem.Instance.AddItemToInventory(ItemName);
+                Debug.Log("Picked up " + ItemName);
+                _hidingTheText.HideText(ItemName);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Inventory is full, cannot pick up " + ItemName);
+            }
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -48,3 +62,9 @@ public class InteractableObject : MonoBehaviour
         }
     }
 }
+
+//TODO
+    //The "next slot", is the next slot in the hierachy, not the actual next slot in the inventory, its an issue of the duplicating slots while making the UI
+    //Pick up 2 items and youll see
+    //First thought is to add a sorting alg at the start
+    //No time to do that rn

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-
-    [SerializeField] private Canvas _canvas;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
 

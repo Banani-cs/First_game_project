@@ -17,6 +17,8 @@ public class MouseMovement : MonoBehaviour
 
     private void Update()
     {
+        if(InventorySystem.Instance.InventoryScreenUI.activeSelf == false)
+        {
         //Getting the mouse input//The Time.deltaTime is used to prevent the mouse from being too sensitive and to make it frame rate independent
 
         //We dont use deltaTime for the mouse input, because the mouse input is already frame rate independent, and we want to make it frame rate dependent, so we can have a consistent mouse sensitivity across different frame rates.
@@ -44,6 +46,6 @@ public class MouseMovement : MonoBehaviour
         transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 
         _playerBody.Rotate(Vector3.up * mouseX);
-
+        }
     }
 }
