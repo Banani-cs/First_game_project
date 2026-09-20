@@ -11,7 +11,7 @@ public class InteractableObject : MonoBehaviour
     private GameObject _itemPickUp;
     private TextMeshProUGUI _itemPickUpText;
     private HidingTheText _hidingTheText;
-    [SerializeField] private Layer _interactableObject;
+    private LayerMask _pickUpCheck;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class InteractableObject : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget && _interactablesObject)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget && gameObject.layer == LayerMask.NameToLayer("interactableObject"))
         {
             Debug.Log("Picked up " + ItemName);
 

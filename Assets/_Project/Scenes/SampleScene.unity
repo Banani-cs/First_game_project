@@ -373,6 +373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable_Object
   <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Rabbit
+  _interactableObject:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &195759387
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -632,6 +635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable_Object
   <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Big_Rabbit
+  _interactableObject:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &287436808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1447,7 +1453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &874102167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1565,6 +1571,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1693026570606076, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1564739577}
+    - targetCorrespondingSourceObject: {fileID: 1693026570606076, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1564739582}
   m_SourcePrefab: {fileID: 100100000, guid: b68302d21e7061f4fb52903649a610f4, type: 3}
 --- !u!4 &1046361206 stripped
 Transform:
@@ -1848,6 +1857,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Tree
+  _interactableObject:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!65 &1564739582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564739567}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 20, z: 20}
+  m_Center: {x: 0.027980804, y: 9.297764, z: -0.25131226}
 --- !u!1 &1678021897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
@@ -1874,23 +1907,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1840978, y: 0.8878302, z: 1.6083899}
   m_Center: {x: -0.000000059604645, y: 0.4439151, z: 0}
---- !u!114 &1678021904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678021897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db0934b51392df744960f87d0d4c7bda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Object_Interact
-  <playerInRange>k__BackingField: 0
-  <ItemName>k__BackingField: Rock
-  _itemPickUp: {fileID: 0}
-  _itemPickUpText: {fileID: 0}
-  _hidingTheText: {fileID: 0}
 --- !u!65 &1678021909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2182,6 +2198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Rocks_03
       objectReference: {fileID: 0}
+    - target: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7444962240430551495, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 399.17117
@@ -2229,9 +2249,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1678021903}
-    - targetCorrespondingSourceObject: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1678021904}
     - targetCorrespondingSourceObject: {fileID: 3812882863738363850, guid: 46831c20cf8a63749ba914f78248d25e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1678021909}
