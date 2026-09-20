@@ -11,6 +11,7 @@ public class InteractableObject : MonoBehaviour
     private GameObject _itemPickUp;
     private TextMeshProUGUI _itemPickUpText;
     private HidingTheText _hidingTheText;
+    [SerializeField] private Layer _interactableObject;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class InteractableObject : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget && _interactablesObject)
         {
             Debug.Log("Picked up " + ItemName);
 
@@ -47,8 +48,3 @@ public class InteractableObject : MonoBehaviour
         }
     }
 }
-
-//TODO: POSSIBLY DESTROYING UNWANTED OBJECTS
-    //Everything uses this same script, so there might be a few edgecases where u can click and delete say a tree or something
-    //Untested, just a thought
-    //NEEDS ATTENTION
