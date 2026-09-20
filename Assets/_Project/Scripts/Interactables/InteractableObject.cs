@@ -34,7 +34,6 @@ public class InteractableObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            //_itemPickUpText.text = ItemName;
             _itemPickUp.SetActive(true);
         }
     }
@@ -48,3 +47,8 @@ public class InteractableObject : MonoBehaviour
         }
     }
 }
+
+//TODO: POSSIBLY DESTROYING UNWANTED OBJECTS
+    //Everything uses this same script, so there might be a few edgecases where u can click and delete say a tree or something
+    //Untested, just a thought
+    //NEEDS ATTENTION

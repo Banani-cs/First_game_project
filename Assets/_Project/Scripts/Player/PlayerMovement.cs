@@ -69,3 +69,7 @@ public class PlayerMovement : MonoBehaviour
     //2: Jumping upon landing, if you land then jump on the exact frame, itll fail
     //Press jump on the exact frame that you landed on the ground
     //Not worth it to fix, because its such a difficult edge case to hit, and if you do hit it, props to you, exact frame is crazy
+//TODO: URGENT, PLAYER VELOCITY IS NOT BEING RESET
+    //3:If you move for 1-2s, then stop, youll gradually move the rest of your velocity
+    //Move 1-2s, then stop
+    //NEED FIXING

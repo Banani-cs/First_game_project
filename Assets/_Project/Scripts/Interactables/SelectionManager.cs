@@ -44,7 +44,7 @@ public class SelectionManager : MonoBehaviour
             //if(selectedTransform.GetComponent<InteractableObject>())
             // This is notoriously unoptimized, because GetComponent is a very expensive function on the CPU
             // We use this instead
-            if (interactables != null && interactables.playerInRange)
+            if (interactables != null && interactables.playerInRange && hitInfo.distance <= _maxDistance)
             {
                 onTarget = true;
                 _interactionInfoText.text = interactables.ItemName;

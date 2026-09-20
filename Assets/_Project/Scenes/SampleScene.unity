@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ea343cb1bd86d4384b41cf4f7b0a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable_Object
+  <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Rabbit
 --- !u!136 &195759387
 CapsuleCollider:
@@ -629,6 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ea343cb1bd86d4384b41cf4f7b0a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable_Object
+  <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Big_Rabbit
 --- !u!136 &287436808
 CapsuleCollider:
@@ -816,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcbfc4dbc905294dac1c54d48293d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MouseMovement
-  _mouseSensitivity: 100
+  _mouseSensitivity: 1.5
   _playerBody: {fileID: 430899966}
 --- !u!1 &410087039
 GameObject:
@@ -1844,6 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ea343cb1bd86d4384b41cf4f7b0a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Tree
 --- !u!1 &1678021897 stripped
 GameObject:
@@ -1885,6 +1888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Object_Interact
   <playerInRange>k__BackingField: 0
   <ItemName>k__BackingField: Rock
+  _itemPickUp: {fileID: 0}
+  _itemPickUpText: {fileID: 0}
+  _hidingTheText: {fileID: 0}
 --- !u!65 &1678021909
 BoxCollider:
   m_ObjectHideFlags: 0
