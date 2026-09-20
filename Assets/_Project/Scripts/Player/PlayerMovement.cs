@@ -42,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
         //We dont use vector.forward or vector.right, because vector is the direction of the entire world, transform is the direction of the player.
         Vector3 move = transform.right * x + transform.forward * z;
 
+        move.Normalize(); // Normalize the movement vector to prevent diagonal movement from being faster than straight movement
+
         _controller.Move(move * _speed * Time.deltaTime);
+
 
         //check if the player is on the ground so he can jump
         if (Input.GetButtonDown("Jump") && _isGrounded)
@@ -57,3 +60,12 @@ public class PlayerMovement : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
     }
 }
+
+//TODO: Coyote Time
+    //1: Ground check is 1 frame late compared to moving, so theres a very specific edge case where if you move out of bound, u have 1 single frame to beable to jump whilst floating
+    //Go out of bound then on the exact next frame jump
+    //Not worth it to fix, because its such a difficult edge case to hit, and if you do hit it, its your own fault for being out of bounds lol 
+//TODO: Jump Buffering
+    //2: Jumping upon landing, if you land then jump on the exact frame, itll fail
+    //Press jump on the exact frame that you landed on the ground
+    //Not worth it to fix, because its such a difficult edge case to hit, and if you do hit it, props to you, exact frame is crazy

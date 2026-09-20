@@ -19,9 +19,9 @@ public class MouseMovement : MonoBehaviour
     {
         //Getting the mouse input//The Time.deltaTime is used to prevent the mouse from being too sensitive and to make it frame rate independent
 
-        //Without the Time.deltaTime, a person with a higher FPS will spin faster than the one that has a lower  FPS. But to be fair the GetAxis function is already frame independent, so we can skip the Time.deltaTime, but we will keep it for now, just in case we want to change the sensitivity later on. Just a note
-        float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
+        //We dont use deltaTime for the mouse input, because the mouse input is already frame rate independent, and we want to make it frame rate dependent, so we can have a consistent mouse sensitivity across different frame rates.
+        float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
 
         //control rotation around x axis (Look up and down)
 

@@ -20,7 +20,7 @@ public class ObjectCanBePickedUp : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget)
         {
             Debug.Log("Picked up " + ItemName);
 
@@ -33,7 +33,7 @@ public class ObjectCanBePickedUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            _itemPickUpText.text = ItemName;
+            //_itemPickUpText.text = ItemName;
             _itemPickUp.SetActive(true);
         }
     }

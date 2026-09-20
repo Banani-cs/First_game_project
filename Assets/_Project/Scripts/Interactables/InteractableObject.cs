@@ -1,16 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-//This is basically just a script that u can put to an Object, and itll be considered an Object that can be interacted with, hence the name Interactable_Object. It has a public string that can be set in the editor, and a public function that returns the string. This is used in the SelectionManager script to display the name of the object when the player looks at it.
+//This is basically just a script that u can put to an Object, and itll be considered an Object that can be interacted with, hence the name InteractableObject.t.
 public class InteractableObject : MonoBehaviour
 {
+    [field: SerializeField] public bool playerInRange { get; private set; } = false;
     [field: SerializeField] public string ItemName { get; private set; }
-    /* So instead of the old C++ looking ahh code
-    public string GetItemName()
+    private GameObject _itemPickUp;
+    private TextMeshProUGUI _itemPickUpText;
+    private HidingTheText _hidingTheText;
+
+    private void Start()
     {
-        return ItemName;
+        _itemPickUp = GameObject.Find("ItemPickUp");
+        _itemPickUp.TryGetComponent(out _hidingTheText);
+        _itemPickUpText = _itemPickUp.GetComponentInChildren<TextMeshProUGUI>();
     }
-    We write like above, less code, faster, and more optimized
-    */
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget)
+        {
+            Debug.Log("Picked up " + ItemName);
+
+            _hidingTheText.HideText(ItemName);
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            //_itemPickUpText.text = ItemName;
+            _itemPickUp.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            _itemPickUp.SetActive(false);
+        }
+    }
 }
