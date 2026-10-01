@@ -6,13 +6,9 @@ using UnityEngine;
 public class EnemyKillingScript : MonoBehaviour
 {
     public bool isPlayerInRange = false;
+    private int _counter = 0;
     private GameObject _enemy;
 
-    //Find the Enemy GameObject in the scene and assign it to the Enemy variable
-    private void Start()
-    {
-        _enemy = GameObject.Find("Enemy");
-    }
     //Checks if the player is in range and if the Enemy GameObject is not null, then destroys the Enemy GameObject then kills it
     private void Update()
     {
@@ -20,12 +16,14 @@ public class EnemyKillingScript : MonoBehaviour
         {
             Destroy(_enemy);
             Debug.Log("Enemy has been killed.");
+            Counter();
         }
     }
 
     //Checks if player is in the collider range
     private void OnTriggerEnter(Collider other)
     {
+        _enemy = other.gameObject;
         if (other.CompareTag("Enemy"))
         {
             isPlayerInRange = true;
@@ -38,5 +36,11 @@ public class EnemyKillingScript : MonoBehaviour
         {
             isPlayerInRange = false;
         }
+    }
+    
+    private void Counter()
+    {
+    _counter++;
+    Debug.Log("Counter: " + _counter);
     }
 }
