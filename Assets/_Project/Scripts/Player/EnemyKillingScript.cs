@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class EnemyKillingScript : MonoBehaviour
 {
     public bool isPlayerInRange = false;
     private int _counter = 0;
+    private int _killTarget = 10;
     private GameObject _enemy;
+    [field: SerializeField] private GameObject _gameEndText;
+    [field: SerializeField] private TextMeshProUGUI _counterText;
 
     //Checks if the player is in range and if the Enemy GameObject is not null, then destroys the Enemy GameObject then kills it
     private void Update()
@@ -41,6 +45,19 @@ public class EnemyKillingScript : MonoBehaviour
     private void Counter()
     {
     _counter++;
-    Debug.Log("Counter: " + _counter);
+    _counterText.text = "Enemies killed: " + _counter;
+           if(_counter >= _killTarget)
+        {
+            _gameEndText.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
+
+    public void RetryGame()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 }
